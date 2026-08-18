@@ -1,0 +1,42 @@
+@import "tailwindcss";
+:root { --ink:#17251f; --muted:#617068; --green:#1f6b4f; --light:#edf6f1; --cream:#f8f5ec; --line:#dce5df; }
+* { box-sizing:border-box; }
+html { background:var(--cream); scroll-behavior:smooth; }
+body { margin:0; color:var(--ink); font-family:Arial, Helvetica, sans-serif; font-size:18px; line-height:1.55; }
+main { min-height:100vh; }
+.hero { padding:54px max(22px, calc((100% - 820px)/2)); background:var(--green); color:white; position:relative; overflow:hidden; }
+.hero:after { content:""; position:absolute; width:260px; height:260px; border:54px solid rgba(255,255,255,.08); border-radius:50%; right:-90px; top:-80px; }
+.eyebrow { text-transform:uppercase; letter-spacing:.16em; font-weight:700; font-size:.76rem; opacity:.84; margin-bottom:12px; }
+h1 { font-family:Georgia, serif; font-size:clamp(2.2rem, 8vw, 4rem); line-height:1.03; letter-spacing:-.035em; margin:0 0 18px; max-width:700px; }
+.hero p { max-width:650px; margin:0 0 24px; font-size:1.05rem; opacity:.9; }
+button,.actions a { font:inherit; font-weight:700; border-radius:10px; cursor:pointer; text-decoration:none; }
+.share { border:0; background:white; color:var(--green); padding:13px 18px; }
+.notices,.summary,.list,footer { width:min(820px, calc(100% - 32px)); margin-inline:auto; }
+.notices { display:grid; gap:12px; margin-top:24px; }
+.notices div { background:#fff7d8; border-left:5px solid #d69d22; padding:17px 18px; border-radius:8px; display:flex; gap:12px; align-items:flex-start; }
+.notices span { text-transform:uppercase; letter-spacing:.08em; color:#8a6110; font-size:.72rem; font-weight:800; min-width:110px; }
+.notices strong { font-size:.98rem; }
+.summary { padding:36px 0 12px; }
+.summary h2,.sectionTitle span { font-family:Georgia, serif; font-size:1.55rem; }
+.summaryGrid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.summaryGrid div { background:white; border:1px solid var(--line); padding:18px; border-radius:12px; }
+.summaryGrid b { display:block; color:var(--green); font-size:2rem; line-height:1; }
+.summaryGrid span { display:block; color:var(--muted); font-size:.88rem; margin-top:8px; line-height:1.3; }
+.list { padding:30px 0 60px; }
+.sectionTitle { display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--ink); padding-bottom:10px; margin-bottom:16px; }
+.sectionTitle small { color:var(--muted); }
+.card { position:relative; background:white; border:1px solid var(--line); padding:26px; margin:16px 0; border-radius:14px; box-shadow:0 5px 18px rgba(25,55,42,.05); }
+.number { color:#8a9a91; font-size:.78rem; font-weight:800; letter-spacing:.12em; }
+.card h2 { font-family:Georgia,serif; font-size:1.6rem; line-height:1.15; margin:5px 0 20px; padding-right:10px; }
+dl { margin:0; }
+dl div { display:grid; grid-template-columns:190px 1fr; gap:14px; padding:9px 0; border-top:1px solid #edf0ee; }
+dt { color:var(--muted); font-size:.84rem; font-weight:700; }
+dd { margin:0; font-weight:700; }
+.textLink { color:var(--green); text-underline-offset:3px; }
+.detail { margin:16px 0 0; padding:13px 15px; background:var(--light); border-radius:8px; font-size:.92rem; }
+.actions { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-top:18px; }
+.actions a { color:var(--green); border:1px solid #a8c5b7; text-align:center; padding:12px 8px; font-size:.82rem; display:flex; align-items:center; justify-content:center; min-height:52px; }
+.actions .primary { background:var(--green); color:white; border-color:var(--green); }
+footer { border-top:1px solid #ccd8d1; padding:28px 0 50px; color:var(--muted); font-size:.9rem; }
+@media (max-width:620px) { body { font-size:17px; } .hero { padding-top:42px; padding-bottom:42px; } .notices div { display:block; } .notices span { display:block; margin-bottom:4px; } .summaryGrid { grid-template-columns:1fr; } .summaryGrid div { display:grid; grid-template-columns:46px 1fr; align-items:center; } .summaryGrid span { margin:0; } .card { padding:22px 18px; } dl div { grid-template-columns:1fr; gap:1px; } .actions { grid-template-columns:1fr; } .actions a { font-size:.9rem; } }
+@media print { .share { display:none; } body { background:white; } .card { break-inside:avoid; box-shadow:none; } }
