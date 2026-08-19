@@ -2,7 +2,7 @@
 
 const guests = [
   { name: "Tita Aquilino Baltodano", congregation: "Cinco Esquinas–Puerto Cortés, Puntarenas", phone: "50670269128", stay: "Quepos Centro", host: "Grace Vargas", hostPhone: "50684267117", map: "https://maps.app.goo.gl/cdZThjiLTf5CrKc89?g_st=aw", detail: "Muy cerca del Salón del Reino de los Testigos de Jehová." },
-  { name: "Laren Jiménez Flores", congregation: "Cinco Esquinas–Puerto Cortés, Puntarenas", phone: "50688900623", stay: "Cerritos", host: "Roy Azofeifa", hostPhone: "50688900623", map: "https://maps.app.goo.gl/cLb8pvVcfu33LjMw7", detail: "Por estar retirado de Quepos centro, se incluye transporte de ida y vuelta a la escuela. Se hospedan Laren y su esposa. Pueden ingresar desde el domingo a partir de las 3:00 p. m." },
+  { name: "Laren Jiménez Flores", congregation: "Cinco Esquinas–Puerto Cortés, Puntarenas", phone: "50688900623", stay: "Cerritos", host: "Roy Azofeifa", hostPhone: "50688900623", map: "https://maps.app.goo.gl/cLb8pvVcfu33LjMw7", detail: "Por estar retirado de Quepos centro, se incluye transporte de ida y vuelta a la escuela. Se hospedan Laren y su esposa." },
   { name: "Flor Alfaro Alfaro", congregation: "Cinco Esquinas–Puerto Cortés, Puntarenas", phone: "50689774187", stay: "Apartamentos Quepos Studio", host: "Pablo Solano", hostPhone: "50685615092", map: "https://maps.app.goo.gl/boCeT2zShizHWhDN6", apartment: true },
   { name: "Rosa María Fonseca González", congregation: "Cinco Esquinas–Puerto Cortés, Puntarenas", phone: "50685923356", stay: "Apartamentos Quepos Studio", host: "Pablo Solano", hostPhone: "50685615092", map: "https://maps.app.goo.gl/boCeT2zShizHWhDN6", apartment: true },
   { name: "Ana Teresa Gutiérrez Araya", congregation: "Cinco Esquinas–Puerto Cortés, Puntarenas", phone: "50686191700", stay: "Apartamentos Quepos Studio", host: "Pablo Solano", hostPhone: "50685615092", map: "https://maps.app.goo.gl/boCeT2zShizHWhDN6", apartment: true },
@@ -11,6 +11,7 @@ const guests = [
 
 const wa = (phone: string, name: string) => `https://wa.me/${phone}?text=${encodeURIComponent(`Hola ${name}, le escribo sobre el hospedaje para la Escuela del Servicio de Precursores.`)}`;
 const shownPhone = (phone: string) => `+506 ${phone.slice(3, 7)}-${phone.slice(7)}`;
+const arrivalNote = "Pueden ingresar desde el domingo a partir de las 3:00 p. m.";
 
 export default function Home() {
   const share = async () => {
@@ -51,8 +52,9 @@ export default function Home() {
               <div><dt>Persona anfitriona</dt><dd>{g.host}</dd></div>
               <div><dt>WhatsApp del hospedaje</dt><dd><a className="textLink" href={wa(g.hostPhone, g.host)} target="_blank" rel="noreferrer">{shownPhone(g.hostPhone)}</a></dd></div>
             </dl>
-            {g.detail && <p className="detail">{g.detail}</p>}
-            {g.apartment && <p className="detail">Apartamento completamente equipado; se puede cocinar.</p>}
+            <p className="detail">
+              {g.detail || "Apartamento completamente equipado; se puede cocinar."} {arrivalNote}
+            </p>
             <div className="actions">
               <a className="primary" href={wa(g.phone, g.name)} target="_blank" rel="noreferrer">WhatsApp de {g.name.split(" ")[0]}</a>
               <a href={wa(g.hostPhone, g.host)} target="_blank" rel="noreferrer">WhatsApp de {g.host.split(" ")[0]}</a>
